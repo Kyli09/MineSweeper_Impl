@@ -8,15 +8,16 @@ def main(n, num_mines):
     # While the game is not over, continue ask for inputs
     while not game.check_win():
         game.print_user_board(game.user_board)
-        row = int(input("Input row number of a covered square: "))
-        col = int(input("Input column number of a covered square: "))
+        row = input("Input row number of a covered square: ")
+        col = input("Input column number of a covered square: ")
 
         # If the input row column pair is not valid, ask for input again
-        while not game.is_valid_move(row, col):
+        while row.isdigit() == False or col.isdigit() == False or game.is_valid_move(int(row), int(col)) == False:
             print("Invalid index")
-            ow = int(input("Input row number of the square: "))
-            col = int(input("Input column number of the square: "))
-
+            row = input("Input row number of the square: ")
+            col = input("Input column number of the square: ")
+        row = int(row)
+        col = int(col)
         # If the new move hits bomb, game is over. print out the board
         if game.make_move(row,col) == False:
             game.print_user_board(game.user_board)
