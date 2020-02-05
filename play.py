@@ -1,9 +1,9 @@
-from board import Board
 import argparse
+from board import Board
 
 def main(n, num_mines):
-    # TODO: Write commandline game
-    game = Board(n,num_mines)
+    # Start Game
+    game = Board(n, num_mines)
     print("Game Start")
     # While the game is not over, continue ask for inputs
     while not game.check_win():
@@ -12,14 +12,14 @@ def main(n, num_mines):
         col = input("Input column number of a covered square: ")
 
         # If the input row column pair is not valid, ask for input again
-        while row.isdigit() == False or col.isdigit() == False or game.is_valid_move(int(row), int(col)) == False:
+        while not row.isdigit() or not col.isdigit() or not game.is_valid_move(int(row), int(col)):
             print("Invalid index")
             row = input("Input row number of the square: ")
             col = input("Input column number of the square: ")
         row = int(row)
         col = int(col)
         # If the new move hits bomb, game is over. print out the board
-        if game.make_move(row,col) == False:
+        if not game.make_move(row, col):
             game.print_user_board(game.user_board)
             print("You Lost :(")
             quit()
