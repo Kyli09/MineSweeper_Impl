@@ -19,4 +19,5 @@ the second is **the column of next move** <br />
 
 `python3 run_solver.py [ n [ num_mines [ num_trials ] ] ]`
 
-Time Taken and Win Percentage will be print out at the end
+Time Taken and Win Percentage will be print out at the end <br />
+Tested Win Percentage: Around 76%
